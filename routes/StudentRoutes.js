@@ -8,4 +8,11 @@ studentRouter.get("/", async (req, res) => {
   res.json(students);
 });
 
+studentRouter.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log(`Id: ${id}`);
+  const student = await StudentService.getStudentById(id);
+  res.json(student);
+});
+
 module.exports = studentRouter;
