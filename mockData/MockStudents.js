@@ -1,4 +1,4 @@
-const Student = require("../../models/Student");
+const Student = require("../models/Student");
 
 const mockStudents = [
   new Student("Per", "Olsson", "870101"),
