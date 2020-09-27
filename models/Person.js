@@ -7,4 +7,8 @@ module.exports = class Person {
     this.lastName = lastName;
     this.dateOfBirth = dateOfBirth;
   }
+
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 };
