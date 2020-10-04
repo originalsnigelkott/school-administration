@@ -12,7 +12,12 @@ module.exports = class BaseService {
     const data = await statement.get([id]);
     return data;
   }
-  
+
+  static async update(id, updates) {
+    const statement = db.prepare(this.updateQueryBuilder(id, updates));
+    await statement.run([...Object.values(updates), id]);
+  }
+
   static selectQueryBuilder(params, table = this.defaultTable) {
     const baseQuery = `SELECT * FROM ${table}`;
     return baseQuery + this.getWhereQuery(params);
