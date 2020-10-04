@@ -13,7 +13,7 @@ module.exports = class Server {
     app.use(bodyParser.json());
     app.use("/api", routes);
     app.listen(serverPort, () => {
-      console.log(`Listening on port ${serverPort}`);
+      console.log(`Listening on port ${serverPort}.`);
     })
   }
 }
