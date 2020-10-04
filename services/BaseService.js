@@ -1,7 +1,10 @@
+const { db } = require("../DatabaseConnection");
+
 module.exports = class BaseService {
-  static selectQueryBuilder(params, table = this.defaultTable) {
-    const baseQuery = `SELECT * FROM ${table}`;
-    return baseQuery + this.getWhereQuery(params);
+  static async getAll() {
+    const statement = db.prepare(this.selectQueryBuilder());
+    const data = await statement.all();
+    return data;
   }
 
   static updateQueryBuilder(id, updates, table = this.defaultTable) {
