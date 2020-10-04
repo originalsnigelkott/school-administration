@@ -10,9 +10,21 @@ studentRouter.get("/", async (req, res) => {
 
 studentRouter.get("/:id", async (req, res) => {
   const id = req.params.id;
-  console.log(`Id: ${id}`);
   const student = await StudentService.getStudentById(id);
   res.json(student);
 });
+
+studentRouter.put("/:id", async (req, res) => {
+  const id = req.params.id;
+  const updates = await req.body;
+  try {
+    await StudentService.updateStudent(id, updates);
+    res.sendStatus(204);
+  }
+  catch(e){
+    console.log(e.message);
+    res.sendStatus(500);
+  }
+})
 
 module.exports = studentRouter;
