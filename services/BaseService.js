@@ -11,6 +11,11 @@ module.exports = class BaseService {
     );
   }
 
+  static deleteQueryBuilder(id, table = this.defaultTable) {
+    const baseQuery = `DELETE FROM ${table}`;
+    return baseQuery + this.getWhereQuery({ id });
+  }
+
   static getWhereQuery(params) {
     let whereQuery = "";
     if (params) {
