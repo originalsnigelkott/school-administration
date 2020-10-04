@@ -17,10 +17,12 @@ module.exports = class StudentService extends BaseService {
   }
 
   static async updateStudent(id, updates) {
-    console.log(this.updateQueryBuilder(id, updates));
     const statement = db.prepare(this.updateQueryBuilder(id, updates));
     await statement.run([...Object.values(updates), id]);
   }
 
-  static deleteStudent() {}
+  static async deleteStudent(id) {
+    const statement = db.prepare(this.deleteQueryBuilder(id))
+    await statement.run([id]);
+  }
 };
