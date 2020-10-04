@@ -26,5 +26,10 @@ studentRouter.put("/:id", async (req, res) => {
     res.sendStatus(500);
   }
 })
+studentRouter.delete("/:id", async (req, res) => {
+  const id = req.params.id;
+  await StudentService.deleteStudent(id);
+  res.sendStatus(204);
+})
 
 module.exports = studentRouter;
