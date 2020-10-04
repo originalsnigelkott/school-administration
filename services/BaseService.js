@@ -18,6 +18,11 @@ module.exports = class BaseService {
     await statement.run([...Object.values(updates), id]);
   }
 
+  static async delete(id) {
+    const statement = db.prepare(this.deleteQueryBuilder(id));
+    await statement.run([id]);
+  }
+
   static selectQueryBuilder(params, table = this.defaultTable) {
     const baseQuery = `SELECT * FROM ${table}`;
     return baseQuery + this.getWhereQuery(params);
