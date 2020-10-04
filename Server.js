@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const routes = require("./routes/Routes");
+const bodyParser = require('body-parser');
 
 module.exports = class Server {
   run() {
@@ -9,7 +10,8 @@ module.exports = class Server {
 
   #startServer() {
     const serverPort = 3060;
-    app.use(routes);
+    app.use(bodyParser.json());
+    app.use("/api", routes);
     app.listen(serverPort, () => {
       console.log(`Listening on port ${serverPort}`);
     })
