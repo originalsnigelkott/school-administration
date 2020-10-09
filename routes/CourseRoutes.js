@@ -7,4 +7,10 @@ courseRouter.get("/", async (req, res) => {
   res.json(courses);
 });
 
+courseRouter.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  const course = await CourseService.getById(id);
+  res.json(course);
+});
+
 module.exports = courseRouter;
