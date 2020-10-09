@@ -5,7 +5,7 @@ const { db } = require("../core/DatabaseConnection");
 module.exports = class StudentService extends BaseService {
   static defaultTable = "students";
 
-  static async createStudent(person) {
+  static async create(person) {
     const newPerson = PersonFactory.makePerson(
       person.firstName,
       person.lastName,
