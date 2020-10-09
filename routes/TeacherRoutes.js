@@ -1,28 +1,21 @@
 const express = require("express");
 const teacherRouter = express.Router();
 const TeacherService = require("../services/TeacherService");
+const BaseRouteFunctions = require("./BaseRouteFunctions");
 
-teacherRouter.get("/", async (req, res) => {
-  const teachers = await TeacherService.getAll();
-  res.json(teachers);
-});
+teacherRouter.get("/", async (req, res) =>
+  BaseRouteFunctions.getAll(req, res, TeacherService)
+);
 
-teacherRouter.get("/:id", async (req, res) => {
-  const id = req.params.id;
-  const teacher = await TeacherService.getById(id);
-  res.json(teacher);
-});
+teacherRouter.get("/:id", async (req, res) =>
+  BaseRouteFunctions.getById(req, res, TeacherService)
+);
 
 teacherRouter.put("/:id", async (req, res) => {
-  const id = req.params.id;
-  const updates = req.body;
-  await TeacherService.update(id, updates);
-  res.sendStatus(204);
+  BaseRouteFunctions.update(req, res, TeacherService);
 });
 teacherRouter.delete("/:id", async (req, res) => {
-  const id = req.params.id;
-  await TeacherService.delete(id);
-  res.sendStatus(204);
+  BaseRouteFunctions.delete(req, res, TeacherService);
 });
 
 teacherRouter.post("", async (req, res) => {
@@ -32,4 +25,3 @@ teacherRouter.post("", async (req, res) => {
 });
 
 module.exports = teacherRouter;
-
