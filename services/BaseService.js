@@ -40,6 +40,14 @@ module.exports = class BaseService {
     return baseQuery + this.getWhereQuery({ id });
   }
 
+  static createQueryBuilder(object) {
+    const keys = Object.keys(object);
+    const query = `INSERT INTO ${this.defaultTable} (${keys.join(
+      ", "
+    )}) VALUES (${keys.map((k) => "@" + k).join(", ")})`;
+    return query;
+  }
+
   static getWhereQuery(params) {
     let whereQuery = "";
     if (params) {
