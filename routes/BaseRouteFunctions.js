@@ -7,6 +7,9 @@ module.exports = class BaseRouteFunctions {
   static getById = async (req, res, service) => {
     const id = req.params.id;
     const data = await service.getById(id);
+    if(!data) {
+      res.sendStatus(404);
+    }
     res.json(data);
   }
 
