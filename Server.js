@@ -3,17 +3,26 @@ const app = express();
 const routes = require("./routes/Routes");
 const bodyParser = require('body-parser');
 
-module.exports = class Server {
-  run() {
-    this.#startServer();
+class Server {
+  static instance;
+
+  constructor(port) {
+    this.startServer(port);
+  }
+  static getInstance() {
+    if(!Server.instance) {
+      Server.instance = new Server(3060);
+    }
+    return Server.instance;
   }
 
-  #startServer() {
-    const serverPort = 3060;
+  startServer(port) {
     app.use(bodyParser.json());
     app.use("/api", routes);
-    app.listen(serverPort, () => {
-      console.log(`Listening on port ${serverPort}.`);
+    app.listen(port, () => {
+      console.log(`Listening on port ${port}.`);
     })
   }
 }
+
+Server.getInstance();
