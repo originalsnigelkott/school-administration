@@ -27,8 +27,8 @@ studentRouter.delete("/:id", async (req, res) => {
 
 studentRouter.post("", async (req, res) => {
   const student = req.body;
-  const student = await StudentService.createStudent(student);
-  res.status(201).json(student);
+  const newStudent = await StudentService.createStudent(student);
+  res.status(201).json(newStudent);
 });
 
 module.exports = studentRouter;
