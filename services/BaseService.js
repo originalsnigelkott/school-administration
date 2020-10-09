@@ -15,12 +15,16 @@ module.exports = class BaseService {
 
   static async update(id, updates) {
     const statement = db.prepare(this.updateQueryBuilder(id, updates));
-    await statement.run([...Object.values(updates), id]);
+    statement.run([...Object.values(updates), id]);
   }
 
   static async delete(id) {
     const statement = db.prepare(this.deleteQueryBuilder(id));
-    await statement.run([id]);
+    statement.run([id]);
+  }
+
+  static async create(object) {
+    throw new Error("Need to method implement in service.");
   }
 
   static selectQueryBuilder(params, table = this.defaultTable) {
