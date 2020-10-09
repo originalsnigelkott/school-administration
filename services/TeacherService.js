@@ -1,5 +1,5 @@
 const BaseService = require("./BaseService");
-const PersonFactory = require("../PersonFactory");
+const PersonFactory = require("../core/PersonFactory");
 const { db } = require("../core/DatabaseConnection");
 
 module.exports = class StudentService extends BaseService {

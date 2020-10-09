@@ -1,5 +1,5 @@
-const Student = require("./models/Student");
-const Teacher = require("./models/Teacher");
+const Student = require("../models/Student");
+const Teacher = require("../models/Teacher");
 
 module.exports = class PersonFactory {
   static makePerson(firstName, lastName, dateOfBirth, nickName) {

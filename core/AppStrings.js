@@ -1,3 +1,3 @@
 module.exports = class AppStrings {
-  static dbPath = `${__dirname}/database/school.db`;
-}
+  static dbPath = `${process.cwd()}/database/school.db`;
+};

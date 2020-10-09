@@ -4,8 +4,8 @@ const AppStrings = require("./AppStrings");
 class DatabaseConnection {
   constructor() {
     this.db = new Database(AppStrings.dbPath);
-    console.log("Connected to database.")
-  };
+    console.log("Connected to database.");
+  }
 
   getDatabaseConnection() {
     return this.db;
@@ -13,6 +13,6 @@ class DatabaseConnection {
 }
 
 const db = new DatabaseConnection();
-Object.freeze(db)
+Object.freeze(db);
 
 exports.db = db.getDatabaseConnection();
