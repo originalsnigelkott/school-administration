@@ -29,10 +29,9 @@ module.exports = class BaseService {
   }
 
   static updateQueryBuilder(id, updates, table = this.defaultTable) {
-    const baseQuery = `UPDATE ${table} SET `;
-    return (
-      baseQuery + this.getUpdateQuery(updates) + this.getWhereQuery({ id })
-    );
+    const keys = Object.keys(updates);
+    const baseQuery = `UPDATE ${table} SET ${keys.map((k) => k + "= ?").join(", ")}`;
+    return baseQuery + this.getWhereQuery({ id });
   }
 
   static deleteQueryBuilder(id, table = this.defaultTable) {
@@ -42,38 +41,16 @@ module.exports = class BaseService {
 
   static createQueryBuilder(object) {
     const keys = Object.keys(object);
-    const query = `INSERT INTO ${this.defaultTable} (${keys.join(
-      ", "
-    )}) VALUES (${keys.map((k) => "@" + k).join(", ")})`;
+    const query = `INSERT INTO ${this.defaultTable} (${keys.join(", ")}) VALUES (${keys.map((k) => "@" + k).join(", ")})`;
     return query;
   }
 
   static getWhereQuery(params) {
     let whereQuery = "";
     if (params) {
-      whereQuery = " WHERE ";
       const keys = Object.keys(params);
-      keys.forEach((key, i) => {
-        whereQuery += `${key} = ?`;
-        if (i < keys.length - 1) {
-          whereQuery += " AND ";
-        }
-      });
+      whereQuery = ` WHERE ${keys.map((k) => k + "= ?").join("AND ")}`;
     }
     return whereQuery;
-  }
-
-  static getUpdateQuery(updates) {
-    let updateQuery = "";
-    if (updates) {
-      const keys = Object.keys(updates);
-      keys.forEach((key, i) => {
-        updateQuery += `${key} = ?`;
-        if (i < keys.length - 1) {
-          updateQuery += ", ";
-        }
-      });
-    }
-    return updateQuery;
   }
 };
