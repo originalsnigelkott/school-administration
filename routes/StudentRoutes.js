@@ -19,6 +19,7 @@ studentRouter.put("/:id", async (req, res) => {
   await StudentService.update(id, updates);
   res.sendStatus(204);
 });
+
 studentRouter.delete("/:id", async (req, res) => {
   const id = req.params.id;
   await StudentService.delete(id);
