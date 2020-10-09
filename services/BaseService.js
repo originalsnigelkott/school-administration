@@ -1,4 +1,4 @@
-const { db } = require("../DatabaseConnection");
+const { db } = require("../core/DatabaseConnection");
 
 module.exports = class BaseService {
   static async getAll() {

@@ -1,6 +1,6 @@
 const BaseService = require("./BaseService");
 const PersonFactory = require("../PersonFactory");
-const { db } = require("../DatabaseConnection");
+const { db } = require("../core/DatabaseConnection");
 
 module.exports = class StudentService extends BaseService {
   static defaultTable = "students";
