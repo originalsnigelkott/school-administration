@@ -5,3 +5,7 @@ class ErrorHandler extends Error {
     this.message = message;
   }
 }
+
+const handleError = (error, res) => {
+  res.status(error.statusCode).text(error.message);
+}
