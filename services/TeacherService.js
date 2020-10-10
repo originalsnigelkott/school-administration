@@ -2,7 +2,7 @@ const BaseService = require("./BaseService");
 const PersonFactory = require("../core/PersonFactory");
 const { db } = require("../core/DatabaseConnection");
 
-module.exports = class StudentService extends BaseService {
+module.exports = class TeacherService extends BaseService {
   static defaultTable = "teachers";
 
   static async create(person) {
