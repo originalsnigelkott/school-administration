@@ -8,4 +8,9 @@ class ErrorHandler extends Error {
 
 const handleError = (error, res) => {
   res.status(error.statusCode).text(error.message);
-}
+};
+
+module.exports = {
+  ErrorHandler,
+  handleError,
+};
