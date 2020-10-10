@@ -1,7 +1,8 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const router = require("./controllers/MainController");
-const bodyParser = require("body-parser");
+const handleErrors = require("./core/ErrorHandling/ErrorHandling");
 
 class Server {
   static instance;
@@ -19,6 +20,7 @@ class Server {
   startServer(port) {
     app.use(bodyParser.json());
     app.use("/api", router);
+    app.use(handleErrors);
     app.listen(port, () => {
       console.log(`Listening on port ${port}.`);
     });
