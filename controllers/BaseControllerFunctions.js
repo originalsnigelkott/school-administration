@@ -1,4 +1,4 @@
-module.exports = class BaseRouteFunctions {
+module.exports = class BaseControllerFunctions {
   static getAll = async (req, res, service) => {
     const data = await service.getAll();
     res.json(data);

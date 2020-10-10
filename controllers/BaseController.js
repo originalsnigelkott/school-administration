@@ -1,28 +1,28 @@
 const express = require("express");
-const BaseRouteFunctions = require("./BaseRouteFunctions");
+const BaseControllerFunctions = require("./BaseControllerFunctions");
 
-module.exports = class BaseRoutes {
+module.exports = class BaseController {
   constructor(service) {
     this.router = express.Router();
     
     this.router.get("/", async (req, res) => {
-      BaseRouteFunctions.getAll(req, res, service);
+      BaseControllerFunctions.getAll(req, res, service);
     });
 
     this.router.get("/:id", async (req, res) => {
-      BaseRouteFunctions.getById(req, res, service);
+      BaseControllerFunctions.getById(req, res, service);
     });
 
     this.router.put("/:id", async (req, res) => {
-      BaseRouteFunctions.update(req, res, service);
+      BaseControllerFunctions.update(req, res, service);
     });
 
     this.router.delete("/:id", async (req, res) => {
-      BaseRouteFunctions.delete(req, res, service);
+      BaseControllerFunctions.delete(req, res, service);
     });
 
     this.router.post("", async (req, res) => {
-      BaseRouteFunctions.create(req, res, service);
+      BaseControllerFunctions.create(req, res, service);
     });
   }
 

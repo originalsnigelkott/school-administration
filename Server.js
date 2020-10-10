@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const routes = require("./controllers/Routes");
+const router = require("./controllers/MainController");
 const bodyParser = require("body-parser");
 
 class Server {
@@ -18,7 +18,7 @@ class Server {
 
   startServer(port) {
     app.use(bodyParser.json());
-    app.use("/api", routes);
+    app.use("/api", router);
     app.listen(port, () => {
       console.log(`Listening on port ${port}.`);
     });
