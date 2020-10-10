@@ -1,4 +1,5 @@
 const { db } = require("../core/DatabaseConnection");
+const { GeneralError } = require("../core/ErrorHandling/Errors");
 
 module.exports = class BaseService {
   static async getAll() {
@@ -24,7 +25,7 @@ module.exports = class BaseService {
   }
 
   static async create(object) {
-    throw new Error("Need to method implement in service.");
+    throw new GeneralError("Method needs to be implemented in service");
   }
 
   static selectQueryBuilder(params, table = this.defaultTable) {
