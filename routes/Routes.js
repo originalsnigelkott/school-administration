@@ -1,15 +1,23 @@
 const express = require("express");
-const router = express.Router();
 const studentRoutes = require("./StudentRoutes");
 const teacherRoutes = require("./TeacherRoutes");
-const courseRoutes = require("./courseRoutes");
+const courseRoutes = require("./CourseRoutes");
 
-router.use("/students", studentRoutes);
-router.use("/teachers", teacherRoutes);
-router.use("/courses", courseRoutes);
+class Routes {
+  constructor() {
+    this.router = express.Router();
+    this.router.use("/students", studentRoutes);
+    this.router.use("/teachers", teacherRoutes);
+    this.router.use("/courses", courseRoutes);
 
-router.get("/", (req, res) => {
-  res.json("Hello, world!");
-});
+    this.router.get("/", (req, res) => {
+      res.json("Hello, world!");
+    });
+  }
 
-module.exports = router;
+  getRouter() {
+    return this.router;
+  }
+};
+
+module.exports = new Routes().getRouter();
