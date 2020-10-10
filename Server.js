@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const routes = require("./routes/Routes");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 class Server {
   static instance;
@@ -10,7 +10,7 @@ class Server {
     this.startServer(port);
   }
   static getInstance() {
-    if(!Server.instance) {
+    if (!Server.instance) {
       Server.instance = new Server(3060);
     }
     return Server.instance;
@@ -21,7 +21,7 @@ class Server {
     app.use("/api", routes);
     app.listen(port, () => {
       console.log(`Listening on port ${port}.`);
-    })
+    });
   }
 }
 
