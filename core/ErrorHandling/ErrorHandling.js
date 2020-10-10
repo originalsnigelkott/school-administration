@@ -1,19 +1,24 @@
-class ErrorHandler extends Error {
-  constructor(statusCode, message, log) {
-    super();
-    this.statusCode = statusCode;
-    this.message = message;
-    this.log = log;
+const { GeneralError } = require("./Errors")
+
+const handleErrors = (err, req, res, next) => {
+  if (err instanceof GeneralError) {
+    const { message, log } = err;
+    const code = err.getCode();
+
+    console.log(log);
+
+    return res.status(code).json({
+      status: "error",
+      message
+    });
   }
+
+  console.log(err.message);
+
+  return res.status(500).json({
+    status: "error",
+    message: "Internal server error"
+  })
 }
 
-const handleError = (error, res) => {
-  const { statusCode, message, log } = error;
-  console.log(`An error occured: ${log}`);
-  res.status(statusCode).text(message);
-};
-
-module.exports = {
-  ErrorHandler,
-  handleError,
-};
+module.exports = handleErrors;
