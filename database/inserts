@@ -1,0 +1,48 @@
+INSERT INTO students (id,firstName,lastName,dateOfBirth,nickName) VALUES
+("5ec9f480-b832-4e5b-bd23-86a6d6b98488","Johan","Larsson","020202","Ace"),
+("abde2cf7-1546-4b7a-a386-18cfa7fe1cf1","Isabelle","Larsson","890101","Isa"),
+("2bd538fc-9e89-4607-8a75-9e40db0fb9be","Clas","Sjöström","770101","Clabban"),
+("149b106d-eba0-4e5c-a7b9-cc9cd7068ea3","Frida","Jonsson","980101","FJ"),
+("915d97c2-f1e3-4ca1-aeff-e88afaa49796","Orvar","Orvarsson","010101","Double-O");
+
+INSERT INTO teachers (id,firstName,lastName,dateOfBirth) VALUES
+("c94b8e2c-0221-4ac6-994d-64644e2e33af","Margareta","Hansson","590212"),
+("1e32a640-b390-4836-a581-9b326a9b4ed0","Lars","Åkesson","790523"),
+("49b41b26-743e-4a01-bbeb-7d22e59df146","Stina","Hagstedt","670911"),
+("0dc00e33-686c-4cb2-bd68-dc67793309f0","Johanna","Fransson","890301"),
+("4eb9ff20-dab5-4f7a-8c1e-732da71c8175","Sten","Berg","710111");
+
+INSERT INTO courses (id,name,teacherId) VALUES
+("0c2e9a4c-822b-4f1e-a189-e8e287fc781f","Svenska 1","c94b8e2c-0221-4ac6-994d-64644e2e33af"),
+("238ee66a-a2c0-4db0-9a0e-42e9c72e761e","Svenska 2","c94b8e2c-0221-4ac6-994d-64644e2e33af"),
+("c04dcc9c-ded2-4252-b474-6734d6fe14c6","Svenska 3","1e32a640-b390-4836-a581-9b326a9b4ed0"),
+("4a23d5e1-47b8-420b-ae82-843a4fdf8226","Engelska 5","1e32a640-b390-4836-a581-9b326a9b4ed0"),
+("323f1972-58d2-42b3-8aac-375f798ce903","Engelska 6","1e32a640-b390-4836-a581-9b326a9b4ed0"),
+("70934285-7526-4f9d-95f0-f703bebe26b5","Historia 1a","c94b8e2c-0221-4ac6-994d-64644e2e33af"),
+("733395da-fa32-4c51-ba29-69b5f0311375","Historia 1b","c94b8e2c-0221-4ac6-994d-64644e2e33af"),
+("535669ea-ab83-4ec9-ba4d-3fcc7306ce5f","Matematik 1a","49b41b26-743e-4a01-bbeb-7d22e59df146"),
+("c1b8bfa8-5a3e-4688-a039-029c1acef8fa","Matematik 1b","49b41b26-743e-4a01-bbeb-7d22e59df146"),
+("8dac936a-da54-4437-9958-a5db0cc7d453","Matematik 1c","49b41b26-743e-4a01-bbeb-7d22e59df146"),
+("8e3396cd-5866-4d41-a21c-a4531ff95200","Matematik 2a","0dc00e33-686c-4cb2-bd68-dc67793309f0"),
+("a1f0ff32-3829-4425-8734-139171873983","Matematik 2b","0dc00e33-686c-4cb2-bd68-dc67793309f0"),
+("6c2dbd9d-93a2-4794-bfee-19950effffb8","Matematik 2c","0dc00e33-686c-4cb2-bd68-dc67793309f0"),
+("7cfbc652-e976-491b-9f23-d142b20fd126","Matematik 3b","0dc00e33-686c-4cb2-bd68-dc67793309f0"),
+("2bdabab8-d311-430d-aaeb-d0ff6727d31a","Matematik 3c","4eb9ff20-dab5-4f7a-8c1e-732da71c8175"),
+("f972e638-4a38-4a84-bf83-0cd70a2d4626","Naturkunskap 1","4eb9ff20-dab5-4f7a-8c1e-732da71c8175"),
+("cd28847f-ac6c-4828-838e-1186b0f62612","Fysik 1","4eb9ff20-dab5-4f7a-8c1e-732da71c8175");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
