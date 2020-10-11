@@ -25,7 +25,7 @@ module.exports = class BaseControllerFunctions {
     try {
       const id = req.params.id;
       const updates = req.body;
-      service.update(id, updates);
+      await service.update(id, updates);
       res.sendStatus(204);
     } catch (e) {
       next(e);
@@ -35,7 +35,7 @@ module.exports = class BaseControllerFunctions {
   static delete = async (req, res, next, service) => {
     try {
       const id = req.params.id;
-      service.delete(id);
+      await service.delete(id);
       res.sendStatus(204);
     } catch (e) {
       next(e);
