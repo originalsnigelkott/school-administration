@@ -21,13 +21,16 @@ module.exports = class BaseService {
       })
     );
     const data = await statement.get([id]);
-    if(!data) {
-      throw new NotFound(this.defaultTable.slice(0, this.defaultTable.length - 1))
+    if (!data) {
+      throw new NotFound(
+        this.defaultTable.slice(0, this.defaultTable.length - 1)
+      );
     }
     return data;
   }
 
   static async update(id, updates) {
+    await this.getById(id);
     const statement = db.prepare(
       QueryFactory.makeQuery(queryTypes.UPDATE, {
         table: this.defaultTable,
@@ -39,6 +42,7 @@ module.exports = class BaseService {
   }
 
   static async delete(id) {
+    await this.getById(id);
     const statement = db.prepare(
       QueryFactory.makeQuery(queryTypes.DELETE, {
         table: this.defaultTable,
