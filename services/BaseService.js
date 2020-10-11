@@ -1,6 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 
 const { db } = require("../core/DatabaseConnection");
+const { NotFound } = require("../core/ErrorHandling/Errors");
 const { QueryFactory, queryTypes } = require("../core/QueryFactory");
 
 module.exports = class BaseService {
@@ -20,6 +21,9 @@ module.exports = class BaseService {
       })
     );
     const data = await statement.get([id]);
+    if(!data) {
+      throw new NotFound(this.defaultTable.slice(0, this.defaultTable.length - 1))
+    }
     return data;
   }
 
